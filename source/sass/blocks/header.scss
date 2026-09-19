@@ -1,73 +1,156 @@
 .header {
-  padding: 20px 0;
+    padding: 20px 0;
 }
 
 .header__wrapper {
+  font-weight: 600;
+  position: relative;
   display: flex;
   gap: 10px;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
-  position: relative;
 
-  @include vp-1439 {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-  }
+    @include vp-1439 {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &.is-open {
+        .header__button::before,
+        .header__button::after {
+            left: 12px;
+            transition-delay: 0s, $trans-300;
+        }
+
+        .header__button::before {
+            top: 20px;
+            transform: rotate(45deg);
+        }
+
+        .header__button::after {
+            top: 20px;
+            transform: rotate(-45deg);
+        }
+
+
+
+        @media (max-width: ($vp-768)) {
+            .header__nav-wrapper {
+                right: -40px;
+            }
+        }
+
+        @include vp-767 {
+            .header__nav-wrapper {
+                right: -16px;
+            }
+        }
+    }
+}
+
+.header__nav-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+
+    @media (max-width: ($vp-768)) {
+        display: grid;
+        position: absolute;
+        right: -200vw;
+        width: 100vw;
+        top: 80px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, min-content);
+        background-color: $color-pearl-bush;
+        z-index: 1;
+        padding-top: 58px;
+        gap: 96px;
+        height: calc(100vh - 100px);
+        background-color: $color-pearl-bush;
+        justify-items: center;
+        transition: right $trans-2000 ease;
+        overflow-y: auto;
+    }
 }
 
 .header__nav {
-  padding-top: 13px;
+    padding-top: 13px;
+
+    grid-column: 2 / 3;
+
+    @media (max-width: ($vp-768)) {
+        grid-column: 1 / -1;
+        padding: 0;
+    }
 }
 
 .header__nav-list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: ($vp-768)) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .header__nav-item {
-  display: flex;
+    display: flex;
 }
 
 .header__nav-item:not(:last-child) {
-  margin-right: 40px;
+    margin-right: 40px;
+
+    @media (max-width: ($vp-768)) {
+        margin: 0 0 53px 0;
+    }
 }
 
 .header__nav-link {
-  position: relative;
-  padding: 3px 0 4px;
-  user-select: none;
+    position: relative;
+    padding: 3px 0 4px 0;
+    user-select: none;
 
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
-    width: 0;
-    height: 2px;
-    background-color: $color-space-shuttle;
-    opacity: 0;
-    visibility: hidden;
-    transition: all $trans-500 ease-out;
-  }
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
 
-  @include hover {
-    &:hover {
-      &::before {
-        opacity: 1;
-        visibility: visible;
-        width: 100%;
-        left: 0;
-        right: 0;
-      }
+        width: 0px;
+        height: 2px;
+
+        background-color: $color-space-shuttle;
+        opacity: 0;
+        visibility: hidden;
+
+        transition: all $trans-500 ease-out;
     }
-  }
+
+    @include hover {
+        &:hover {
+            &::before {
+                opacity: 1;
+                visibility: visible;
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+        }
+
+    }
+
+    @media (max-width: ($vp-768)) {
+        font-size: 32px;
+        line-height: 125%;
+    }
 }
+
 
 .header__right {
   display: inline-flex;
@@ -119,108 +202,126 @@
 }
 
 .header__menu-link {
-  display: block;
-  padding: 16px 29px 3px 0;
-  position: relative;
-  user-select: none;
-  align-self: start;
-  grid-column: 5 / 6;
+    display: block;
+    padding: 16px 29px 3px 0;
+    position: relative;
+    user-select: none;
+    align-self: start;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 16px;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    background-image: url("../img/svg/coffee-cup.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  &.is-active {
-    border-bottom: 2px solid $color-space-shuttle;
-    pointer-events: none;
-  }
-
-  @media (max-width: ($vp-768)) {
-    display: none;
-    grid-column: 1 / -1;
-    justify-self: center;
-    font-size: 32px;
-    line-height: 125%;
-    padding: 0 55px 0 0;
+    grid-column: 5 / 6;
 
     &::before {
-      width: 40px;
-      height: 40px;
-      top: 0;
+        content: "";
+        position: absolute;
+        top: 16px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background-image: url("../img/svg/coffee-cup.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
-  }
+
+    &.is-active {
+        border-bottom: 2px solid $color-space-shuttle;
+        pointer-events: none;
+    }
+
+    @media (max-width: ($vp-768)) {
+        display: block;
+        grid-column: 1 / -1;
+        justify-self: center;
+        font-size: 32px;
+        line-height: 125%;
+        padding: 0 55px 0 0;
+
+        &::before {
+            width: 40px;
+            height: 40px;
+            top: 0;
+        }
+    }
 }
 
 .header__menu-link--home {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
-    width: 0;
-    height: 2px;
-    background-color: $color-space-shuttle;
-    opacity: 0;
-    visibility: hidden;
-    transition: all $trans-500 ease-out;
-  }
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
 
-  @include hover {
-    &:hover {
-      &::after {
-        opacity: 1;
-        visibility: visible;
-        width: 100%;
-        left: 0;
-        right: 0;
-      }
+        width: 0px;
+        height: 2px;
+
+        background-color: $color-space-shuttle;
+        opacity: 0;
+        visibility: hidden;
+
+        transition: all $trans-500 ease-out;
     }
-  }
+
+    @include hover {
+        &:hover {
+            &::after {
+                opacity: 1;
+                visibility: visible;
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    @media (max-width: ($vp-768)) {
+        display: none;
+    }
+}
+
+.header__menu-link--nav {
+  display: none;
+
+      @media (max-width: ($vp-768)) {
+        display: block;
+    }
 }
 
 .header__button {
-  display: none;
+    display: none;
 
-  @media (max-width: ($vp-768)) {
-    display: block;
-    width: 44px;
-    height: 44px;
-    background-color: $color-transparent;
-    border: 1px solid $color-makara;
-    border-radius: 100px;
-    padding: 0;
-    cursor: pointer;
-    position: relative;
+    @media (max-width: ($vp-768)) {
+        display: block;
+        width: 44px;
+        height: 44px;
+        background-color: $color-transparent;
+        border: 1px solid $color-makara;
+        border-radius: 100px;
+        padding: 0;
+        cursor: pointer;
+        position: relative;
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      left: 12px;
-      width: 18px;
-      height: 1.5px;
-      background-color: $color-space-shuttle;
-      transition: $trans-300 ease-in;
-      transition-property: top, transform;
-      transition-delay: $trans-300, 0s;
-      border-radius: 2px;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 12px;
+            width: 18px;
+            height: 1.5px;
+            background-color: $color-space-shuttle;
+            transition: $trans-300 ease-in;
+            transition-property: top, transform;
+
+            transition-delay: $trans-300, 0s;
+
+            border-radius: 2px;
+        }
+
+        &::before {
+            top: 16px;
+        }
+
+        &::after {
+            top: 24px;
+        }
     }
-
-    &::before {
-      top: 16px;
-    }
-
-    &::after {
-      top: 24px;
-    }
-  }
 }

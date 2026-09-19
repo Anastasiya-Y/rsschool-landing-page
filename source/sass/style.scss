@@ -5,8 +5,9 @@
 @import "utils/reboot";
 @import "utils/fonts";
 @import "utils/container.scss";
+@import "utils/utils.scss";
 
 // Blocks
 @import "blocks/header";
 @import "blocks/footer";
-@import "blocks/social.scss"
+@import "blocks/social.scss";
