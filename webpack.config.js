@@ -24,11 +24,11 @@ module.exports = (env) => {
             }),
             new CopyPlugin({
                 patterns: [
-                  { from: 'source/img', to: 'img' },
-                  { from: 'source/fonts', to: 'fonts' },
-                  { from: 'source/public' },
-                  { from: 'source/favicon', to: 'favicon' },
-                  { from: 'source/video', to: 'video' },
+                  { from: 'source/img', to: 'img', noErrorOnMissing: true },
+                  { from: 'source/fonts', to: 'fonts', noErrorOnMissing: true },
+                  { from: 'source/public', noErrorOnMissing: true },
+                  { from: 'source/favicon', to: 'favicon', noErrorOnMissing: true },
+                  { from: 'source/video', to: 'video', noErrorOnMissing: true },
                 ],
               }),
         ],
@@ -46,7 +46,11 @@ module.exports = (env) => {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
-                                sassOptions: { outputStyle: 'expanded' }
+                                api: "modern",
+                                sassOptions: {
+                                    outputStyle: 'expanded',
+                                    silenceDeprecations: ['import', 'legacy-js-api']
+                                }
                             }
                         },
                     ],

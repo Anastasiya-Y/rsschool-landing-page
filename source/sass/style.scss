@@ -1,7 +1,12 @@
 // Global
+@import "utils/variables";
+@import "utils/mixins.scss";
 @import "utils/normalize";
 @import "utils/reboot";
 @import "utils/fonts";
+@import "utils/container.scss";
 
 // Blocks
 @import "blocks/header";
+@import "blocks/footer";
+@import "blocks/social.scss"

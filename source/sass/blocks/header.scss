@@ -1,0 +1,226 @@
+.header {
+  padding: 20px 0;
+}
+
+.header__wrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+
+  @include vp-1439 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.header__nav {
+  padding-top: 13px;
+}
+
+.header__nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__nav-item {
+  display: flex;
+}
+
+.header__nav-item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.header__nav-link {
+  position: relative;
+  padding: 3px 0 4px;
+  user-select: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    width: 0;
+    height: 2px;
+    background-color: $color-space-shuttle;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $trans-500 ease-out;
+  }
+
+  @include hover {
+    &:hover {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.header__right {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__theme-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  gap: 8px;
+  border: 1px solid $color-tide;
+  border-radius: 100px;
+  margin-right: 24px;
+}
+
+.header__theme {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  width: 36px;
+  height: 36px;
+  border-radius: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: $trans-300 ease-in;
+  transition-property: all;
+
+  &.header__theme--light {
+    color: $color-pearl-bush;
+    background: $color-sandrift;
+  }
+
+  &.header__theme--dark {
+    background-color: $color-transparent;
+    color: $color-space-shuttle;
+
+    @include hover {
+      &:hover {
+        color: $color-pearl-bush;
+        background-color: $color-makara;
+      }
+    }
+  }
+}
+
+.header__menu-link {
+  display: block;
+  padding: 16px 29px 3px 0;
+  position: relative;
+  user-select: none;
+  align-self: start;
+  grid-column: 5 / 6;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/svg/coffee-cup.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &.is-active {
+    border-bottom: 2px solid $color-space-shuttle;
+    pointer-events: none;
+  }
+
+  @media (max-width: ($vp-768)) {
+    display: none;
+    grid-column: 1 / -1;
+    justify-self: center;
+    font-size: 32px;
+    line-height: 125%;
+    padding: 0 55px 0 0;
+
+    &::before {
+      width: 40px;
+      height: 40px;
+      top: 0;
+    }
+  }
+}
+
+.header__menu-link--home {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    width: 0;
+    height: 2px;
+    background-color: $color-space-shuttle;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $trans-500 ease-out;
+  }
+
+  @include hover {
+    &:hover {
+      &::after {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.header__button {
+  display: none;
+
+  @media (max-width: ($vp-768)) {
+    display: block;
+    width: 44px;
+    height: 44px;
+    background-color: $color-transparent;
+    border: 1px solid $color-makara;
+    border-radius: 100px;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      width: 18px;
+      height: 1.5px;
+      background-color: $color-space-shuttle;
+      transition: $trans-300 ease-in;
+      transition-property: top, transform;
+      transition-delay: $trans-300, 0s;
+      border-radius: 2px;
+    }
+
+    &::before {
+      top: 16px;
+    }
+
+    &::after {
+      top: 24px;
+    }
+  }
+}
