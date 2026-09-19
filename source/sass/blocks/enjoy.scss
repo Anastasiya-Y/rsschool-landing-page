@@ -1,0 +1,112 @@
+.enjoy__wrapper {
+    padding: 100px 730px 100px 100px;
+    border-radius: 40px;
+    color: $color-pearl-bush;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    h1 {
+        font-size: 72px;
+        font-weight: 600;
+        line-height: 105%;
+        margin: 0 0 40px 0;
+    }
+
+    p {
+        margin: 0 0 40px 0;
+    }
+
+    span {
+        font-style: italic;
+        color: $color-sandrift;
+    }
+
+    @include vp-1439 {
+        padding: 100px 60px;
+        min-height: 644px;
+    }
+
+    @include vp-767 {
+        padding: 60px 16px;
+        min-height: 552px;
+
+        h1 {
+            font-size: 42px;
+            line-height: 115%;
+            margin-bottom: 39px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 150%;
+        }
+    }
+}
+
+.enjoy__video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    overflow: hidden;
+
+    video {
+        object-fit: cover;
+        height: 100%;
+    }
+}
+
+.enjoy__menu-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-pearl-bush;
+    padding: 20px;
+    min-width: 200px;
+    border-radius: 100px;
+    font-weight: 600;
+    position: relative;
+    transition: all $trans-300 ease-in;
+    user-select: none;
+    align-self: start;
+    margin-top: auto;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 22px;
+        right: 64px;
+        width: 20px;
+        height: 20px;
+        background-image: url("../img/svg/coffee-cup.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0;
+        visibility: hidden;
+        transition: all $trans-300 ease-in;
+    }
+
+    @include hover {
+        &:hover {
+            padding-right: 48px;
+
+            &::before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    @include vp-1439 {
+        padding-right: 48px;
+
+        &::before {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
