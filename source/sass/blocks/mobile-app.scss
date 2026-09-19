@@ -1,0 +1,138 @@
+.mobile-app {
+    padding: 100px 0;
+
+    @include vp-767 {
+        padding: 101px 0 100px 0;
+    }
+}
+
+.mobile-app__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+
+    h2 {
+        font-size: 60px;
+        font-weight: 600;
+        line-height: 125%;
+        margin: 0 0 40px 0;
+    }
+
+    span {
+        font-style: italic;
+        color: $color-sandrift;
+    }
+
+    p {
+        margin: 0 0 39px 0;
+    }
+
+    @include vp-1439 {
+        grid-template-columns: 1fr;
+
+        p {
+            margin-bottom: 40px;
+        }
+    }
+
+    @include vp-767 {
+        gap: 40px;
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 39px;
+        }
+    }
+}
+
+.mobile-app__content {
+    margin-top: 144px;
+
+    @include vp-1439 {
+        margin: 0;
+    }
+}
+
+.mobile-app__shops-container {
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    gap: 20px;
+    cursor: pointer;
+
+    @include vp-767 {
+        grid-template-columns: auto;
+        justify-items: start;
+    }
+}
+
+.mobile-app__shop {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 12px 20px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1px solid $color-makara;
+    transition: all $trans-500 ease-in;
+    min-width: 200px;
+
+    svg {
+        fill: $color-space-shuttle;
+        transition: all $trans-500 ease-in;
+    }
+
+    @include hover {
+        &:hover {
+            background-color: $color-makara;
+            color: $color-pearl-bush;
+
+            svg {
+                fill: $color-pearl-bush;
+                transition: all $trans-500 ease-in;
+            }
+
+            span {
+                color: $color-pearl-bush;
+            }
+        }
+    }
+
+    @include vp-1439 {
+        padding: 11px 20px 11px 19px;
+    }
+
+    @include vp-767 {
+        display: inline-flex;
+    }
+}
+
+.mobile-app__shop-text {
+    cursor: default;
+
+    p {
+        margin: 0 0 2px 0;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 140%;
+    }
+
+    span {
+        font-weight: 600;
+        color: $color-space-shuttle;
+        font-style: normal;
+        transition: all $trans-500 ease-in;
+    }
+}
+
+.mobile-app__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vp-767 {
+        img {
+            width: 348px;
+            height: 348px;
+        }
+    }
+}
