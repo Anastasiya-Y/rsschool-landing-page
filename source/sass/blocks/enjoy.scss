@@ -53,6 +53,9 @@
     height: 100%;
     border-radius: 40px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     video {
         object-fit: cover;
