@@ -42,6 +42,16 @@
                 background-color: $color-pearl-bush;
             }
         }
+
+        .dark &:hover {
+          background-color: $color-space-shuttle;
+          color: $color-pearl-bush;
+          border-color: $color-space-shuttle;
+
+          .catalog__icon-wrapper {
+            background-color: $color-magic;
+          }
+        }
     }
 
     &.is-active {
@@ -54,9 +64,24 @@
         }
     }
 
+    .dark &.is-active {
+      background-color: $color-space-shuttle;
+      color: $color-pearl-bush;
+      border-color: $color-space-shuttle;
+
+      .catalog__icon-wrapper {
+        background-color: $color-magic;
+      }
+    }
+
     @include vp-767 {
         gap: 8px;
         padding: 8px 15px 7px 8px;
+    }
+
+    .dark & {
+      color: $color-pearl-bush;
+      border-color: $color-makara;
     }
 }
 
@@ -70,6 +95,10 @@
     height: 30px;
     background-color: $color-tide;
     transition: all $trans-500 ease-out;
+
+    .dark & {
+      background-color: $color-makara;
+    }
 }
 
 .catalog__list {
@@ -100,6 +129,10 @@
     border: 1px solid $color-tide;
     cursor: pointer;
     min-height: 506px;
+
+    .dark & {
+      border-color: $color-makara;
+    }
 
     @include hover {
         &:hover {
@@ -141,16 +174,34 @@
         margin: 0 0 12px 0;
     }
 
+    .dark & {
+      h3 {
+        color: $color-pearl-bush;
+      }
+    }
+
     p {
         line-height: 150%;
         margin: 0 0 12px 0;
         flex-grow: 1;
     }
 
+    .dark & {
+      p {
+        color: $color-pearl-bush;
+      }
+    }
+
     span {
         font-size: 24px;
         font-weight: 600;
         line-height: 125%;
+    }
+
+    .dark & {
+      span {
+        color: $color-pearl-bush;
+      }
     }
 
     @include vp-1439 {
@@ -186,6 +237,14 @@
             stroke: $color-space-shuttle;
         }
 
+      .dark & {
+        color: $color-pearl-bush;
+        border-color: $color-pearl-bush;
+
+        svg {
+          stroke: $color-pearl-bush;
+        }
+      }
         @include hover {
             &:hover {
                 background-color: $color-makara;
@@ -194,6 +253,15 @@
                     stroke: $color-pearl-bush;
                 }
             }
+
+          .dark &:hover {
+            border-color: $color-space-shuttle;
+            background-color: $color-space-shuttle;
+
+            svg {
+              stroke: $color-pearl-bush;
+            }
+          }
         }
     }
 }

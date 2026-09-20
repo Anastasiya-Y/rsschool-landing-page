@@ -18,6 +18,12 @@
         margin: 0 0 40px 0;
     }
 
+    .dark & {
+      h2 {
+        color: $color-pearl-bush;
+      }
+    }
+
     span {
         font-style: italic;
         color: $color-sandrift;
@@ -25,6 +31,12 @@
 
     p {
         margin: 0 0 39px 0;
+    }
+
+    .dark & {
+      p {
+        color: $color-pearl-bush;
+      }
     }
 
     @include vp-1439 {
@@ -75,10 +87,19 @@
     border: 1px solid $color-makara;
     transition: all $trans-500 ease-in;
     min-width: 200px;
+    cursor: pointer;
 
     svg {
         fill: $color-space-shuttle;
         transition: all $trans-500 ease-in;
+    }
+
+    .dark & {
+      border-color: $color-tide;
+
+      svg {
+        fill: $color-pearl-bush;
+      }
     }
 
     @include hover {
@@ -95,6 +116,20 @@
                 color: $color-pearl-bush;
             }
         }
+
+      .dark &:hover {
+        background-color: $color-space-shuttle;
+        color: $color-pearl-bush;
+        border-color: $color-space-shuttle;
+
+        svg {
+          fill: $color-pearl-bush;
+        }
+
+        span {
+          color: $color-pearl-bush;
+        }
+      }
     }
 
     @include vp-1439 {
@@ -107,8 +142,6 @@
 }
 
 .mobile-app__shop-text {
-    cursor: default;
-
     p {
         margin: 0 0 2px 0;
         font-size: 10px;
@@ -121,6 +154,11 @@
         color: $color-space-shuttle;
         font-style: normal;
         transition: all $trans-500 ease-in;
+    }
+    .dark & {
+      span {
+        color: $color-pearl-bush;
+      }
     }
 }
 

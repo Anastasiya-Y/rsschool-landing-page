@@ -10,6 +10,10 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 100px;
 
+  .dark & {
+    background-color: $color-space-shuttle;
+  }
+
   h2 {
     font-size: 60px;
     font-weight: 600;

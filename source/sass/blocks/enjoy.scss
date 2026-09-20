@@ -112,4 +112,13 @@
             visibility: visible;
         }
     }
+
+    .dark & {
+      background-color: $color-magic;
+      color: $color-pearl-bush;
+
+      &::before {
+        background-image: url("../img/svg/coffee-cup-light.svg");
+      }
+    }
 }

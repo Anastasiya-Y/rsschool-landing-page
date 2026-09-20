@@ -27,6 +27,14 @@ body {
   background-color: $color-pearl-bush;
   display: flex;
   flex-direction: column;
+
+  &.dark {
+    background-color: $color-magic;
+  }
+
+  &.dark a {
+    color: $color-pearl-bush;
+  }
 }
 
 a {

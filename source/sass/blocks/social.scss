@@ -16,6 +16,10 @@
   border: 1px solid $color-tide;
   transition: all $trans-500 ease-out;
 
+  .dark & {
+    border-color: $color-makara;
+  }
+
   svg {
     color: $color-pearl-bush;
     transition: all $trans-500 ease-out;
@@ -28,6 +32,15 @@
 
       svg {
         color: $color-space-shuttle;
+      }
+    }
+
+    .dark &:hover {
+      background-color: $color-magic;
+      border-color: $color-magic;
+
+      svg {
+        color: $color-pearl-bush;
       }
     }
   }

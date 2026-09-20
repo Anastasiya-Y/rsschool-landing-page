@@ -23,6 +23,12 @@
         }
     }
 
+    .dark & {
+      h1 {
+        color: $color-pearl-bush;
+      }
+    }
+
     @include vp-767 {
         h1 {
             font-size: 32px;
