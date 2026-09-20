@@ -1,0 +1,32 @@
+.menu {
+    margin-bottom: 98px;
+
+    @include vp-1439 {
+        margin-bottom: 100px;
+    }
+}
+
+.menu__wrapper {
+    text-align: center;
+
+    h1 {
+        font-size: 60px;
+        font-weight: 600;
+        line-height: 125%;
+        margin: 0 auto 40px auto;
+        max-width: 800px;
+        text-align: center;
+
+        span {
+            font-style: italic;
+            color: $color-sandrift;
+        }
+    }
+
+    @include vp-767 {
+        h1 {
+            font-size: 32px;
+            margin: 1px auto 39px auto;
+        }
+    }
+}
