@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://anastasiya-y.github.io/rsschool-landing-page",
   "scripts": {
     "start": "webpack serve --env mode=development",
     "dev": "webpack --env mode=development",
     "build": "webpack --env mode=production",
-    "lint:css": "npx stylelint \"source/**/*.{css,scss}\" --fix"
+    "lint:css": "npx stylelint \"source/**/*.{css,scss}\" --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "gh-pages": "^6.3.0",
     "html-loader": "^4.2.0",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-scss": "^4.0.9",

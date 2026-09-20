@@ -12,7 +12,8 @@ module.exports = (env) => {
         output: {
             path: path.resolve(__dirname, 'build'),
             filename: 'js/main.js',
-            clean: true
+            clean: true,
+            publicPath: 'auto'
         },
         optimization: {
             minimize: false
