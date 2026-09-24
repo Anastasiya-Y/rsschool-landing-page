@@ -1,0 +1,51 @@
+.social__list {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 12px;
+}
+
+.social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border-radius: 100px;
+  border: 1px solid $color-tide;
+  transition: all $trans-500 ease-out;
+
+  .dark & {
+    border-color: $color-makara;
+  }
+
+  svg {
+    color: $color-pearl-bush;
+    transition: all $trans-500 ease-out;
+  }
+
+  @include hover {
+    &:hover {
+      background-color: $color-pearl-bush;
+      border-color: $color-pearl-bush;
+
+      svg {
+        color: $color-space-shuttle;
+      }
+    }
+
+    .dark &:hover {
+      background-color: $color-magic;
+      border-color: $color-magic;
+
+      svg {
+        color: $color-pearl-bush;
+      }
+    }
+  }
+
+  @include vp-1439 {
+    padding: 17px;
+  }
+}
