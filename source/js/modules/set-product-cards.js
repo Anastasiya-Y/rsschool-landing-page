@@ -1,3 +1,6 @@
+import {Modal} from './set-modal';
+import {createNode} from '../utils/utils';
+
 export class ProductCard {
   constructor({name, id, description, price, category, imageName}) {
     this.name = name;
@@ -8,22 +11,8 @@ export class ProductCard {
     this.imageName = imageName;
   }
 
-  createNode(tag, text, className) {
-    const node = document.createElement(tag);
-
-    if (text !== null) {
-      node.textContent = text;
-    }
-
-    if (className) {
-      node.className = className;
-    }
-
-    return node;
-  }
-
   createImage() {
-    const wrapperNode = this.createNode('div', null, 'catalog__image-wrapper');
+    const wrapperNode = createNode('div', null, 'catalog__image-wrapper');
 
     const imgNode = document.createElement('img');
     imgNode.src = `img/content/catalog/${this.imageName}`;
@@ -38,7 +27,7 @@ export class ProductCard {
   }
 
   createProductCard() {
-    const productCard = this.createNode('li', null, 'catalog__item');
+    const productCard = createNode('li', null, 'catalog__item');
     productCard.dataset.id = this.id;
     productCard.dataset.filter = this.category;
 
@@ -48,20 +37,20 @@ export class ProductCard {
     }
 
     if (this.name || this.description || this.price) {
-      const textNode = this.createNode('div', null, 'catalog__item-text');
+      const textNode = createNode('div', null, 'catalog__item-text');
 
       if (this.name) {
-        const nameNode = this.createNode('h3', this.name);
+        const nameNode = createNode('h3', this.name);
         textNode.append(nameNode);
       }
 
       if (this.description) {
-        const descriptionNode = this.createNode('p', this.description);
+        const descriptionNode = createNode('p', this.description);
         textNode.append(descriptionNode);
       }
 
       if (this.price) {
-        const priceNode = this.createNode('span', `$${this.price}`);
+        const priceNode = createNode('span', `$${this.price}`);
         textNode.append(priceNode);
       }
 
@@ -85,6 +74,17 @@ const generateProductCards = (data, targetFilter) => {
   return fragment;
 };
 
+const renderModal = (data) => {
+  if (document.querySelector('.modal')) {
+    return;
+  }
+
+  const modal = new Modal(data);
+
+  modal.createModal();
+};
+
+
 const setProductCards = (data, targetFilter) => {
   if (!data.length) {
     return;
@@ -95,6 +95,16 @@ const setProductCards = (data, targetFilter) => {
   if (productCardsContainer) {
     productCardsContainer.innerHTML = '';
     productCardsContainer.append(generateProductCards(data, targetFilter));
+
+    productCardsContainer.addEventListener('click', (evt) => {
+      const catalogItemNode = evt.target.closest('.catalog__item');
+
+      if (catalogItemNode) {
+        const id = catalogItemNode.dataset.id;
+        const targetData = data.find((item) => item.id === id);
+        renderModal(targetData);
+      }
+    });
   }
 };
 

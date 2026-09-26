@@ -159,6 +159,51 @@
       </div>
     </footer>
   </div>
+  <template id="modal-template">
+    <div class="modal">
+      <div class="modal__wrapper">
+        <div class="modal__content">
+          <div class="modal__image-wrapper">
+            <img src="#" width="310" height="310" alt="">
+          </div>
+          <div class="modal__text-content">
+            <div class="modal__text">
+              <h3>Item name</h3>
+              <p>Item description</p>
+            </div>
+            <div class="modal__size">
+              <h4>Size</h4>
+              <ul class="modal__options-list modal__options-list--size"></ul>
+            </div>
+            <div class="modal__additives">
+              <h4>Additives</h4>
+              <ul class="modal__options-list modal__options-list--additives"></ul>
+            </div>
+            <div class="modal__total">
+              <span>Total:</span>
+              <span class="modal__total-price">$0.00</span>
+            </div>
+            <div class="modal__info">
+              <div class="modal__info-image-wrapper">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_268_11729)">
+                    <path d="M8 7.66663V11" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8 5.00667L8.00667 4.99926" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8.00016 14.6667C11.6821 14.6667 14.6668 11.6819 14.6668 8.00004C14.6668 4.31814 11.6821 1.33337 8.00016 1.33337C4.31826 1.33337 1.3335 4.31814 1.3335 8.00004C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667Z" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_268_11729">
+                      <rect width="16" height="16" fill="white"></rect>
+                    </clipPath>
+                  </defs>
+                </svg></div>
+              <p>The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</p>
+            </div><button class="modal__button" type="button" data-close-modal="">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
   <script src="js/main.js"></script>
 </body>
 
