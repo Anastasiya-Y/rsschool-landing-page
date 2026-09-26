@@ -1,5 +1,3 @@
-import data from '../data/products.json';
-
 export class ProductCard {
   constructor({name, id, description, price, category, imageName}) {
     this.name = name;
@@ -74,18 +72,20 @@ export class ProductCard {
   }
 }
 
-const generateProductCards = () => {
+const generateProductCards = (data, targetFilter) => {
   const fragment = document.createDocumentFragment();
 
   data.forEach((item) => {
-    const card = new ProductCard(item);
-    fragment.append(card.createProductCard());
+    if (item.category === targetFilter) {
+      const card = new ProductCard(item);
+      fragment.append(card.createProductCard());
+    }
   });
 
   return fragment;
 };
 
-const setProductCards = () => {
+const setProductCards = (data, targetFilter) => {
   if (!data.length) {
     return;
   }
@@ -94,9 +94,8 @@ const setProductCards = () => {
 
   if (productCardsContainer) {
     productCardsContainer.innerHTML = '';
-    productCardsContainer.append(generateProductCards());
+    productCardsContainer.append(generateProductCards(data, targetFilter));
   }
-
 };
 
 export {setProductCards};

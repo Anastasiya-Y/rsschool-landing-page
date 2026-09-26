@@ -1,10 +1,12 @@
 import '../sass/style.scss';
 import {setMenu} from './modules/set-burger-menu';
 import {setTheme} from './modules/set-theme';
-import {setProductCards} from './modules/set-products-cards';
+import {setLoadButton} from './modules/set-load-button';
+import {setCatalogFilter} from './modules/set-catalog-filter';
 
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
   setTheme();
   setMenu();
-  setProductCards();
-};
+  setLoadButton();
+  setCatalogFilter();
+});
