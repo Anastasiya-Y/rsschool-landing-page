@@ -1,72 +1,102 @@
-import info from '../data/products.json';
-
-const data = info;
+import data from '../data/products.json';
 
 export class ProductCard {
-    constructor ({name, id, description, price, category, imageName, ...rest}) {
-        this.name = name;
-        this.id = id;
-        this.description = description;
-        this.price = price;
-        this.category = category;
-        this.imageName = imageName;
+  constructor({name, id, description, price, category, imageName}) {
+    this.name = name;
+    this.id = id;
+    this.description = description;
+    this.price = price;
+    this.category = category;
+    this.imageName = imageName;
+  }
+
+  createNode(tag, text, className) {
+    const node = document.createElement(tag);
+
+    if (text !== null) {
+      node.textContent = text;
     }
 
-    createProductCard() {
-        let template = '';
-        let productCard = document.createElement('li');
-        productCard.className = 'catalog__item';
-        productCard.setAttribute('data-id', this.id);
-        productCard.setAttribute('data-filter', this.category);
-
-        if (this.imageName) {
-            template += '<div class="catalog__image-wrapper">'
-                template += `<img src="img/content/catalog/${this.imageName}" width="310" height="310" alt="Photos of ${this.name}.">`
-            template += '</div>'
-        }
-
-        if (this.name || this.description || this.price) {
-            template += '<div class="catalog__item-text">'
-                if (this.name) {
-                    template += `<h3>${this.name}</h3>`
-                }
-
-                if (this.description) {
-                    template += `<p>${this.description}</p>`
-                }
-
-                if (this.price) {
-                    template += `<span>$${this.price}</span>`
-                }
-            template += '</div>'
-        }
-
-        productCard.innerHTML = template;
-
-        return productCard;
+    if (className) {
+      node.className = className;
     }
+
+    return node;
+  }
+
+  createImage() {
+    const wrapperNode = this.createNode('div', null, 'catalog__image-wrapper');
+
+    const imgNode = document.createElement('img');
+    imgNode.src = `img/content/catalog/${this.imageName}`;
+    imgNode.width = 310;
+    imgNode.height = 310;
+    imgNode.alt = `Photos of ${this.name}.`;
+    imgNode.loading = 'lazy';
+
+    wrapperNode.append(imgNode);
+
+    return wrapperNode;
+  }
+
+  createProductCard() {
+    const productCard = this.createNode('li', null, 'catalog__item');
+    productCard.dataset.id = this.id;
+    productCard.dataset.filter = this.category;
+
+    if (this.imageName) {
+      const imageWrapperNode = this.createImage();
+      productCard.append(imageWrapperNode);
+    }
+
+    if (this.name || this.description || this.price) {
+      const textNode = this.createNode('div', null, 'catalog__item-text');
+
+      if (this.name) {
+        const nameNode = this.createNode('h3', this.name);
+        textNode.append(nameNode);
+      }
+
+      if (this.description) {
+        const descriptionNode = this.createNode('p', this.description);
+        textNode.append(descriptionNode);
+      }
+
+      if (this.price) {
+        const priceNode = this.createNode('span', `$${this.price}`);
+        textNode.append(priceNode);
+      }
+
+      productCard.append(textNode);
+    }
+
+    return productCard;
+  }
 }
 
-const generateProductCards = (data) => {
-    let productCards = [];
-    data.forEach((item) => {
-      console.log(item)
-        productCards.push(new ProductCard(item));
-    })
-    return productCards;
-}
+const generateProductCards = () => {
+  const fragment = document.createDocumentFragment();
+
+  data.forEach((item) => {
+    const card = new ProductCard(item);
+    fragment.append(card.createProductCard());
+  });
+
+  return fragment;
+};
 
 const setProductCards = () => {
-    if (data) {
-        const productCardsContainer = document.querySelector('.catalog__list');
+  if (!data.length) {
+    return;
+  }
 
-        if (productCardsContainer) {
-            productCardsContainer.innerHTML = '';
-            generateProductCards(data).forEach((item) => {
-                productCardsContainer.append(item.createProductCard());
-            });
-        }
-    }
-}
+  const productCardsContainer = document.querySelector('.catalog__list');
+
+  if (productCardsContainer) {
+    productCardsContainer.innerHTML = '';
+    productCardsContainer.append(generateProductCards());
+  }
+
+};
 
 export {setProductCards};
