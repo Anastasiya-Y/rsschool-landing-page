@@ -45,13 +45,13 @@
 }
 
 .favourites-coffee__slider-wrapper {
-    // width: 480px;
-    width: 100%;
-    // overflow: hidden;
+    width: 480px;
+    overflow: hidden;
     margin: 0 -40px;
 
     @include vp-767 {
         width: 348px;
+        margin: 0;
     }
 }
 
@@ -60,16 +60,10 @@
     margin: 0;
     list-style-type: none;
     position: relative;
-    overflow: hidden;
-    // width: 1440px;
-    width: 100%;
     display: flex;
     left: 0;
     transition: all $trans-500 ease-in-out;
-
-    @include vp-1439 {
-      flex-wrap: wrap;
-    }
+    will-change: left;
 }
 
 .favourites-coffee__card {
@@ -77,8 +71,14 @@
     flex-direction: column;
     align-items: center;
     max-width: 480px;
-    margin: 0 auto 39px auto;
+    margin: 0 0 39px 0;
     width: 480px;
+    flex: 0 0 480px;
+
+    &.is-clone {
+      pointer-events: none;
+      user-select: none;
+    }
 
     &:hover {
         .favourites-coffee__pagination-button .is-active::before {
@@ -122,21 +122,25 @@
     }
 
     @include vp-767 {
+        flex: 0 0 348px;
         width: 348px;
     }
 }
 
 .favourites-coffee__image-wrapper {
     margin-bottom: 21px;
+    width: 100%;
 
     img {
-      object-fit: contain;
+        width: 100%;
+        height: auto;
+        display: block;
     }
 
     @include vp-767 {
         img {
-            width: 348px;
-            height: 348px;
+            width: 100%;
+            height: auto;
         }
     }
 }
@@ -222,6 +226,8 @@
     border-radius: 100px;
     position: relative;
     overflow: hidden;
+    padding: 0;
+    border: none;
 
     .favourites-coffee__pagination-loader {
         display: block;
