@@ -1,0 +1,152 @@
+.footer {
+  padding-bottom: 40px;
+}
+
+.footer__wrapper {
+  border-radius: 40px;
+  background-color: $color-makara;
+  padding: 100px 100px 99px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
+
+  .dark & {
+    background-color: $color-space-shuttle;
+  }
+
+  h2 {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 125%;
+    color: $color-pearl-bush;
+    margin: 0 0 40px;
+  }
+
+  span {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 125%;
+    font-style: italic;
+    color: $color-sandrift;
+  }
+
+  @include vp-1439 {
+    padding: 100px 60px 104px;
+    grid-template-columns: 1fr;
+    gap: 101px;
+  }
+
+  @include vp-767 {
+    padding: 61px 16px 64px;
+    gap: 41px;
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 39px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    span {
+      font-size: 32px;
+    }
+  }
+}
+
+.footer__contacts {
+  padding-top: 33px;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 125%;
+    color: $color-pearl-bush;
+    margin: 0 0 39px;
+  }
+
+  @include vp-1439 {
+    padding: 0;
+  }
+}
+
+.footer__contacts-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.footer__contacts-item {
+  display: grid;
+  grid-template-columns: 20px auto;
+  align-items: center;
+  gap: 8px;
+
+  img {
+    margin-bottom: 4px;
+  }
+
+  span {
+    font-size: 16px;
+    font-style: normal;
+    color: $color-pearl-bush;
+    display: block;
+    margin-top: 2px;
+  }
+}
+
+.footer__contacts-item--hours {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.footer__contacts-item:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.footer__address,
+.footer__tel {
+  display: inline-flex;
+  padding-bottom: 4px;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  color: $color-pearl-bush;
+  position: relative;
+  font-style: normal;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    width: 0;
+    height: 2px;
+    background-color: $color-pearl-bush;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $trans-500 ease-out;
+  }
+
+  @include hover {
+    &:hover {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.footer__address {
+  address {
+    font-style: normal;
+  }
+}

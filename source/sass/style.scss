@@ -1,0 +1,19 @@
+// Global
+@import "utils/variables";
+@import "utils/mixins.scss";
+@import "utils/normalize";
+@import "utils/reboot";
+@import "utils/fonts";
+@import "utils/container.scss";
+@import "utils/utils.scss";
+
+// Blocks
+@import "blocks/header";
+@import "blocks/footer";
+@import "blocks/social.scss";
+@import "blocks/enjoy.scss";
+@import "blocks/about.scss";
+@import "blocks/mobile-app.scss";
+@import "blocks/catalog.scss";
+@import "blocks/menu.scss";
+@import "blocks/favourites-coffee.scss";

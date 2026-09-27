@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-style: normal;
+  font-weight: 400;
+  font-size: $fz-default;
+  line-height: 24px;
+  font-family: $ff-inter;
+  color: $color-space-shuttle;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: $color-pearl-bush;
+  display: flex;
+  flex-direction: column;
+
+  &.dark {
+    background-color: $color-magic;
+  }
+
+  &.dark a {
+    color: $color-pearl-bush;
+  }
+}
+
+a {
+  color: $color-space-shuttle;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+main {
+  flex: 1;
+}
