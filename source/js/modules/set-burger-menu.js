@@ -1,63 +1,63 @@
-import {isEscapeKey} from "../utils/utils.js";
+import {isEscapeKey} from '../utils/utils.js';
 
-const menuOpenElement = document.querySelector("[data-open-menu]");
-const menuCloseElements = document.querySelectorAll("[data-close-menu]");
-const menu = document.querySelector("[data-menu]");
-const body = document.querySelector("body");
-const menuMediaQuery = window.matchMedia("(max-width: 768px)");
+const SCROLL_LOCK_CLASS = 'scroll-lock';
+const OPEN_CLASS = 'is-open';
 
-const scrollLockToggle = (isMobile) => {
-  if (menu.classList.contains("is-open")) {
-    !isMobile
-      ? body.classList.remove("scroll-lock")
-      : body.classList.add("scroll-lock");
-  }
-};
+const menuOpenNode = document.querySelector('[data-open-menu]');
+const menuCloseNodes = document.querySelectorAll('[data-close-menu]');
+const menuNode = document.querySelector('[data-menu]');
+const bodyNode = document.body;
+const menuMediaQuery = window.matchMedia('(max-width: 768px)');
 
 const menuToggle = () => {
-  menu.classList.toggle("is-open");
-  if (!menu.classList.contains("is-open")) {
-    body.classList.remove("scroll-lock");
-  } else {
-    body.classList.add("scroll-lock");
-  }
+  const isOpen = menuNode.classList.toggle(OPEN_CLASS);
+  bodyNode.classList.toggle(SCROLL_LOCK_CLASS, isOpen);
 };
 
 const closeMenu = () => {
-  menu.classList.remove("is-open");
-  body.classList.remove("scroll-lock");
+  menuNode.classList.remove(OPEN_CLASS);
+  bodyNode.classList.remove(SCROLL_LOCK_CLASS);
+};
+
+const onMenuLinkClick = (evt) => {
+  const linkNode = evt.target.closest('a');
+  if (linkNode && menuNode.contains(linkNode)) {
+    closeMenu();
+  }
 };
 
 const setMenu = () => {
-  if (menu) {
-    if (menuOpenElement) {
-      menuOpenElement.addEventListener("click", () => {
-        menuToggle();
-      });
-    }
-
-    if (menuCloseElements.length > 0) {
-      for (let i = 0; i < menuCloseElements.length; i++) {
-        const menuCloseElement = menuCloseElements[i];
-        menuCloseElement.addEventListener("click", () => {
-          closeMenu();
-        });
-      }
-    }
+  if (!menuNode) {
+    return;
   }
-  document.addEventListener("keydown", (evt) => {
-    if (isEscapeKey(evt)) {
-      if (document.querySelector(".main-header__wrapper.is-open")) {
-        closeMenu();
-      }
+
+  if (menuOpenNode) {
+    menuOpenNode.addEventListener('click', () => {
+      menuToggle();
+    });
+  }
+
+  menuCloseNodes.forEach((node) => {
+    node.addEventListener('click', closeMenu);
+  });
+
+  menuNode.addEventListener('click', onMenuLinkClick);
+
+  document.addEventListener('keydown', (evt) => {
+    if (!isEscapeKey(evt)) {
+      return;
+    }
+
+    if (menuNode.classList.contains(OPEN_CLASS)) {
+      closeMenu();
     }
   });
 
-  menuMediaQuery.addEventListener("change", (evt) => {
-    scrollLockToggle(evt.matches);
+  menuMediaQuery.addEventListener('change', (evt) => {
+    if (!evt.matches) {
+      closeMenu();
+    }
   });
-
-  scrollLockToggle(menuMediaQuery.matches);
 };
 
-export { setMenu };
+export {setMenu};
