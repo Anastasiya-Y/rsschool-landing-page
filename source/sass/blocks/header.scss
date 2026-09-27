@@ -16,6 +16,18 @@
         justify-content: space-between;
     }
 
+    @media (max-width: ($vp-768)) {
+      .header__nav-wrapper {
+        padding-top: 220px;
+      }
+    }
+
+    @include vp-767 {
+      .header__nav-wrapper {
+        padding-top: 58px;
+      }
+    }
+
     &.is-open {
         .header__button::before,
         .header__button::after {
@@ -33,19 +45,15 @@
             transform: rotate(-45deg);
         }
 
-
-
         @media (max-width: ($vp-768)) {
             .header__nav-wrapper {
                 right: -40px;
-                padding-top: 220px;
             }
         }
 
         @include vp-767 {
             .header__nav-wrapper {
                 right: -16px;
-                padding-top: 58px;
             }
         }
     }
