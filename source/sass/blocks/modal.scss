@@ -215,12 +215,20 @@
     line-height: 140%;
     border-top: 1px solid $color-tide;
 
-    .dark {
+    .dark & {
       border-color: $color-makara;
     }
 
     @include vp-1439 {
         padding: 9px 0 8px 0;
+    }
+
+    & .modal__info-image-wrapper {
+      color: $color-space-shuttle;
+    }
+
+    .dark & .modal__info-image-wrapper {
+      color: $color-pearl-bush;
     }
 }
 
@@ -241,7 +249,7 @@
     cursor: pointer;
 
     .dark & {
-      background-color: $color-makara;
+      background-color: $color-transparent;
       color: $color-pearl-bush;
       border-color: $color-tide;
     }
