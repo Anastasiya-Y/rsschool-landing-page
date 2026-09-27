@@ -340,6 +340,8 @@ const setSlider = () => {
   if (sliderButtonPrevNode) {
     sliderButtonPrevNode.addEventListener('click', onSlideChangePrev);
   }
+
+  mobileMediaQuery.addEventListener('change', () => setPosition(domPosition(slideCounter), true));
 };
 
 export {setSlider};
